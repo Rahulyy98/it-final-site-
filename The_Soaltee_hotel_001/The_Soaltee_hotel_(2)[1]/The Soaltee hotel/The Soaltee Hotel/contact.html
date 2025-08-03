@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <title>Contact Us Form</title>
+  <link rel="stylesheet" href="css/contact.css">
+  <script>
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const errorMessage = document.getElementById('error_message');
+
+      if (!name || !subject || !phone || !email || !message) {
+        errorMessage.innerHTML = "Please fill in all fields.";
+        errorMessage.style.color = "blue";
+        return false;
+      }
+
+      // Simple email format validation
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!email.match(emailPattern)) {
+        errorMessage.innerHTML = "Please enter a valid email.";
+        errorMessage.style.color = "blue";
+        return false;
+      }
+
+      errorMessage.innerHTML = "";
+      return true;
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+ <nav>
+    <ul style="list-style-type: none; display: flex; gap: 20px; background-color: #333; padding: 10px;">
+      <li><a href="index.html" style="color: rgb(196, 123, 123); text-decoration: none;">Home</a></li>
+      <li><a href="gallery.html" style="color: rgb(150, 96, 96); text-decoration: none;">Gallery</a></li>
+      <li><a href="aboutus.html" style="color: rgb(194, 129, 129); text-decoration: none;">About Us</a></li>
+      <li><a href="login.html" style="color: rgb(195, 113, 113); text-decoration: none;">Log in</a></li>
+      <li><a href="register.html" style="color: rgb(173, 113, 113); text-decoration: none;">Register</a></li>
+      <li><a href="contact.html" style="color: rgb(188, 112, 112); text-decoration: none;">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Form -->
+  <div class="wrapper">
+    <h2>Contact Us</h2>
+    <div id="error_message"></div>
+    <form id="contactForm" onsubmit="return validateForm();">
+      <div class="input_field">
+        <input type="text" id="name" placeholder="Name">
+      </div>
+      <div class="input_field">
+        <input type="text" id="subject" placeholder="Subject">
+      </div>
+      <div class="input_field">
+        <input type="text" id="phone" placeholder="Phone">
+      </div>
+      <div class="input_field">
+        <input type="text" id="email" placeholder="Email">
+      </div>
+      <div class="input_field">
+        <textarea id="message" placeholder="Message"></textarea>
+      </div>
+      <div class="btn">
+        <input type="submit" value="Send">
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
+
